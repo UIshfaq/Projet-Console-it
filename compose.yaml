@@ -1,0 +1,28 @@
+services:
+  database:
+    container_name: console-it-database
+    image: mariadb:latest
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: app_db
+      MYSQL_ROOT_PASSWORD: root
+      TZ: Europe/Paris
+    volumes:
+      - ./var/dbdata:/var/lib/mysql # Configure MariaDB pour stocker les données de l'application.
+
+  phpmyadmin:
+    container_name: console-it-pma
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 1G
+      MEMORY_LIMIT: 512M
+      MAX_EXECUTION_TIME: 0
+    restart: always
+    depends_on:
+      - database # phpMyAdmin permet d'interagir facilement avec la base de données via une interface web.
