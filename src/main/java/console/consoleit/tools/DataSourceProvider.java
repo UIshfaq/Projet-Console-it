@@ -8,22 +8,22 @@ import java.util.TimeZone;
 public class DataSourceProvider {
     private static Connection cnx;
     public static Connection getCnx() {
-        if (cnx == null || isClosed(cnx)) {
-            try {
-                String pilote = "org.mariadb.jdbc.Driver"; // MariaDB utilise aussi com.mysql.cj.jdbc.Driver si MySQL est configuré
-                Class.forName(pilote); // Charge le driver MariaDB/MySQL
-                cnx = DriverManager.getConnection(
-                        "jdbc:mysql://console-it-db:3306/app_db?serverTimezone=" + TimeZone.getDefault().getID(),
-                        "root",
-                        "root"
-                );
-                System.out.println("Connexion à la base de données établie.");
-            } catch (ClassNotFoundException e) {
-                System.err.println("Pilote MariaDB/MySQL introuvable : " + e.getMessage());
-            } catch (SQLException e) {
-                System.err.println("Erreur lors de la connexion à la base de données : " + e.getMessage());
+            if (cnx == null || isClosed(cnx)) {
+                try {
+                    String pilote = "com.mysql.cj.jdbc.Driver";
+                    Class.forName(pilote); // Charge le driver MySQL
+                    cnx = DriverManager.getConnection(
+                            "jdbc:mysql://localhost/app_db?serverTimezone=" + TimeZone.getDefault().getID(),
+                            "root",
+                            "root"
+                    );
+                    System.out.println("Connexion à la base de données établie.");
+                } catch (ClassNotFoundException e) {
+                    System.err.println("Pilote MySQL introuvable : " + e.getMessage());
+                } catch (SQLException e) {
+                    System.err.println("Erreur lors de la connexion à la base de données : " + e.getMessage());
+                }
             }
-        }
         return cnx;
     }
 
@@ -36,3 +36,4 @@ public class DataSourceProvider {
         }
     }
 }
+
