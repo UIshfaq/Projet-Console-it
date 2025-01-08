@@ -15,7 +15,7 @@ public class AdminService {
     }
 
     public Boolean verifierIdentifiant(String email, String password) throws SQLException {
-        return adminRepository.verifierIdentifiant(email, password);
+        return adminRepository.verifierIdentifiants(email, password);
     }
 
     public ArrayList<Employer> getAll() throws SQLException {
@@ -31,7 +31,7 @@ public class AdminService {
     }
 
     public void supprimerUser(int idUser) throws SQLException {
-        adminRepository.supprimerEmploye(idUser);
+        adminRepository.supprimerUser(idUser);
     }
 
     public void forcerMdpChange(int idUser) throws SQLException {

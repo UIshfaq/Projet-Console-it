@@ -64,7 +64,7 @@ public class ConnectController implements Initializable {
         {
             try {
                 if (adminController.verifierIdentifiants(txtEmail.getText(), txtMdp.getText())) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("inscription-view.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(ConnectApplication.class.getResource("inscription-view.fxml"));
 
                     Scene scene = new Scene(fxmlLoader.load());
                     Stage stage = new Stage();
