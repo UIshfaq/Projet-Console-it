@@ -38,7 +38,7 @@ public class AdminTableauBordController implements Initializable {
 
         try {
 
-            tvAdmin.setItems(FXCollections.observableArrayList(adminController.getLesEmployes()));
+            tvAdmin.setItems(FXCollections.observableArrayList(adminController.getAll()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
