@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="console.consoleit.AdminTableauBordController">
+   <children>
+      <TableView fx:id="tvAdmin" layoutX="41.0" layoutY="87.0" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="tcIdEmploye" prefWidth="37.3333420753479" text="id" />
+          <TableColumn fx:id="tcNomEmploye" prefWidth="72.66669082641602" text="nom" />
+            <TableColumn fx:id="tcPrenomEmploye" prefWidth="87.99996185302734" text="prenom" />
+        </columns>
+      </TableView>
+      <Label layoutX="41.0" layoutY="62.0" text="Les employer" />
+      <Label layoutX="304.0" layoutY="62.0" text="Les mission" />
+      <TableView fx:id="tvMission" layoutX="304.0" layoutY="87.0" prefHeight="200.0" prefWidth="301.0">
+        <columns>
+          <TableColumn fx:id="tcIdMission" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="tcNomMission" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="tcMateriels" prefWidth="75.0" text="matériels" />
+            <TableColumn fx:id="tcSite" prefWidth="75.0" text="site" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
