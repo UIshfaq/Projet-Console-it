@@ -26,6 +26,20 @@ public class AdminTableauBordController implements Initializable {
 
     private AdminController adminController;
     DataSourceProvider macnx;
+    @FXML
+    private TableColumn tcMateriels;
+    @FXML
+    private TableColumn tcIdMission;
+    @FXML
+    private TableColumn tcSite;
+    @FXML
+    private TableColumn tcBloque;
+    @FXML
+    private TableColumn tcEmail;
+    @FXML
+    private TableColumn tcNomMission;
+    @FXML
+    private TableView tvMission;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -35,9 +49,10 @@ public class AdminTableauBordController implements Initializable {
         tcIdEmploye.setCellValueFactory(new PropertyValueFactory<>("id"));
         tcNomEmploye.setCellValueFactory(new PropertyValueFactory<>("nom"));
         tcPrenomEmploye.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        tcBloque.setCellValueFactory(new PropertyValueFactory<>("is_blocked"));
+        tcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
 
         try {
-
             tvAdmin.setItems(FXCollections.observableArrayList(adminController.getAll()));
         } catch (SQLException e) {
             e.printStackTrace();

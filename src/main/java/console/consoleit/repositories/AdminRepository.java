@@ -35,7 +35,7 @@ public class AdminRepository {
 
     public ArrayList<Employer> getAll() throws SQLException {
         ArrayList<Employer> employer = new ArrayList<>();
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT id , nom , prenom , email , is_blocked FROM user WHERE admin = 0;");
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT id , nom , prenom , email , is_blocked FROM Employe WHERE admin = 0;");
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             Employer employers = new Employer(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getString("email"), resultSet.getBoolean("is_blocked"));
