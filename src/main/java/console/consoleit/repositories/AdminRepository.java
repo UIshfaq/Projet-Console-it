@@ -18,13 +18,13 @@ public class AdminRepository {
     }
 
     public Boolean verifierIdentifiants(String email, String mdp) throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("SELECT email, mdp, admin from employe where email = ? and mdp = ?");
+        PreparedStatement ps = connection.prepareStatement("SELECT email, mdp, admin FROM employe WHERE email = ? AND mdp = ?");
         ps.setString(1, email);
         ps.setString(2, mdp);
         boolean result = false;
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            if (rs.getString("password").equals(mdp) && rs.getString("email").equals(email)) {
+            if (rs.getString("mdp").equals(mdp) && rs.getString("email").equals(email)) {
                 result = true;
             }
         }
