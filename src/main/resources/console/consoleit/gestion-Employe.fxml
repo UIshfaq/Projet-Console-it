@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="console.consoleit.GestionEmploye">
+    <children>
+    <TableView fx:id="tvAdmin" layoutX="14.0" layoutY="87.0" prefHeight="200.0" prefWidth="427.0">
+        <columns>
+            <TableColumn fx:id="tcIdEmploye" prefWidth="37.3333420753479" text="id" />
+            <TableColumn fx:id="tcNomEmploye" prefWidth="72.66669082641602" text="nom" />
+            <TableColumn fx:id="tcPrenomEmploye" prefWidth="87.99996185302734" text="prenom" />
+            <TableColumn fx:id="tcEmail" prefWidth="75.0" text="email" />
+            <TableColumn prefWidth="75.0" text="bloquer" />
+            <TableColumn prefWidth="75.0" text="supprimer" />
+        </columns>
+    </TableView>
+    <Label layoutX="41.0" layoutY="62.0" text="Les employer" />
+      <Button fx:id="btnBloquer" layoutX="112.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#btnBloquerCliked" text="Bloquer" />
+      <Button fx:id="btnSupprimer" layoutX="282.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#btnSupprimerCliked" text="supprimer" />
+    </children>
+</AnchorPane>
