@@ -8,15 +8,17 @@ public class Employer {
     private String prenom;
     private String email;
     private Boolean isBlocked;
+    private Boolean isSuprimer;
 
 
 
-    public Employer(int id, String nom, String prenom, String email, Boolean isBlocked) {
+    public Employer(int id, String nom, String prenom, String email, Boolean isBlocked, Boolean isSuprimer) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.isBlocked = isBlocked;
+        this.isSuprimer = isSuprimer;
     }
     public Employer(int id, String nom, String prenom, String email) {
         this.id = id;
@@ -64,5 +66,13 @@ public class Employer {
 
     public void setBlocked(boolean blocked) {
         isBlocked = blocked;
+    }
+
+    public Boolean isSuprimer() {
+        return isSuprimer;
+    }
+
+    public void setSuprimer(boolean suprimer) {
+        isSuprimer = suprimer;
     }
 }
