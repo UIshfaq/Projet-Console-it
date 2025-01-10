@@ -9,7 +9,7 @@ import javafx.scene.control.TableView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GestionEmploye implements Initializable {
+public class GestionEmployeController implements Initializable {
     @javafx.fxml.FXML
     private TableColumn tcPrenomEmploye;
     @javafx.fxml.FXML
