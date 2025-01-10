@@ -33,7 +33,7 @@ public class AdminTableauBordController implements Initializable {
     @FXML
     private TableColumn tcSite;
     @FXML
-    private TableColumn tcBloque;
+    private TableColumn<Employer,Boolean> tcBloque;
     @FXML
     private TableColumn tcEmail;
     @FXML
@@ -49,7 +49,6 @@ public class AdminTableauBordController implements Initializable {
         tcIdEmploye.setCellValueFactory(new PropertyValueFactory<>("id"));
         tcNomEmploye.setCellValueFactory(new PropertyValueFactory<>("nom"));
         tcPrenomEmploye.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        tcBloque.setCellValueFactory(new PropertyValueFactory<>("is_blocked"));
         tcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
 
         try {
