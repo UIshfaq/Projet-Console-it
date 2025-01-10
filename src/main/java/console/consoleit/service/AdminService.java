@@ -37,4 +37,8 @@ public class AdminService {
     public void forcerMdpChange(int idUser) throws SQLException {
         adminRepository.forcerMdpChange(idUser);
     }
+
+    public ArrayList<Employer> getAllEmploye() throws SQLException {
+        return adminRepository.getAllEmploye();
+    }
 }

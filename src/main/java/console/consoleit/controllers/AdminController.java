@@ -37,4 +37,8 @@ public class AdminController {
     public void forcerMdpChange(int idUser) throws SQLException {
         adminService.forcerMdpChange(idUser);
     }
+
+    public ArrayList<Employer> getAllEmploye() throws SQLException {
+        return adminService.getAllEmploye();
+    }
 }

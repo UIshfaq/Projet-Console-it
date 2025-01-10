@@ -71,4 +71,16 @@ public class AdminRepository {
         preparedStatement.executeUpdate();
         preparedStatement.close();
     }
+    public ArrayList<Employer> getAllEmploye() throws SQLException {
+        ArrayList<Employer> employer = new ArrayList<>();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT id , nom , prenom , email,is_blocked,is_supprimer  FROM Employe WHERE admin = 0;");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            Employer employers = new Employer(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getString("email"),resultSet.getBoolean("is_blocked"),resultSet.getBoolean("is_supprimer"));
+            employer.add(employers);
+        }
+        preparedStatement.close();
+        resultSet.close();
+        return employer;
+    }
 }
