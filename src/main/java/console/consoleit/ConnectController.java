@@ -31,9 +31,8 @@ public class ConnectController implements Initializable {
     DataSourceProvider cnx;
     private AdminController adminController;
 
-    @FXML
 
-
+    @Deprecated
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cnx = new DataSourceProvider();
@@ -42,6 +41,7 @@ public class ConnectController implements Initializable {
 
     }
 
+    @FXML
     public void btnConnectClicked(MouseEvent mouseEvent) {
         if(txtEmail.getText().isEmpty())
         {

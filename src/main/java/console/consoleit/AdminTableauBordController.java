@@ -19,8 +19,6 @@ import java.util.ResourceBundle;
 
 public class AdminTableauBordController implements Initializable {
     @FXML
-    private TableView<Employer> tvAdmin;
-    @FXML
     private TableColumn<Employer, Integer> tcIdEmploye;
     @FXML
     private TableColumn<Employer, String> tcNomEmploye;
@@ -40,8 +38,6 @@ public class AdminTableauBordController implements Initializable {
     @FXML
     private TableColumn tcNomMission;
     @FXML
-    private TableView tvMission;
-    @FXML
     private Button brnSupp;
     @FXML
     private Button btnCreer;
@@ -53,6 +49,16 @@ public class AdminTableauBordController implements Initializable {
     private TextField txtSite;
     @FXML
     private TextField txtNomMission;
+    @FXML
+    private TextField txtPrixMission;
+    @FXML
+    private TextField txtDescriptionMission;
+    @FXML
+    private TextField txtPrixIntervenant;
+    @FXML
+    private TableView tvMissionsEmployer;
+    @FXML
+    private TableView tvAdminEmployer;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -65,7 +71,7 @@ public class AdminTableauBordController implements Initializable {
         tcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
 
         try {
-            tvAdmin.setItems(FXCollections.observableArrayList(adminController.getAll()));
+            tvAdminEmployer.setItems(FXCollections.observableArrayList(adminController.getAll()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
