@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="console.consoleit.GestionEmployeController">
     <children>
-    <TableView fx:id="tvAdmin" layoutX="14.0" layoutY="87.0" prefHeight="200.0" prefWidth="427.0">
+    <TableView fx:id="tvAdmin" layoutX="14.0" layoutY="87.0" prefHeight="200.0" prefWidth="508.0">
         <columns>
             <TableColumn fx:id="tcIdEmploye" prefWidth="37.3333420753479" text="id" />
             <TableColumn fx:id="tcNomEmploye" prefWidth="72.66669082641602" text="nom" />
@@ -16,6 +16,7 @@
             <TableColumn fx:id="tcEmail" prefWidth="75.0" text="email" />
             <TableColumn fx:id="tcBloque" prefWidth="75.0" text="bloquer" />
             <TableColumn fx:id="tcSupprimer" prefWidth="75.0" text="supprimer" />
+            <TableColumn fx:id="tcChangerMdp" prefWidth="80.6666259765625" text="changer Mdp" />
         </columns>
     </TableView>
     <Label layoutX="41.0" layoutY="62.0" text="Les employer" />

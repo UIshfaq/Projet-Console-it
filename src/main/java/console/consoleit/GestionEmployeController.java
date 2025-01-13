@@ -36,6 +36,8 @@ public class GestionEmployeController implements Initializable {
     private TableColumn tcSupprimer;
     @javafx.fxml.FXML
     private TableColumn tcBloque;
+    @javafx.fxml.FXML
+    private TableColumn tcChangerMdp;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,17 +49,17 @@ public class GestionEmployeController implements Initializable {
         tcPrenomEmploye.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         tcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         tcBloque.setCellValueFactory(new PropertyValueFactory<>("isBlocked"));
-        tcSupprimer.setCellValueFactory(new PropertyValueFactory<>("isSupprimer"));
-
-
+        tcSupprimer.setCellValueFactory(new PropertyValueFactory<>("isSuprimer"));
+        tcChangerMdp.setCellValueFactory(new PropertyValueFactory<>("changeMdp"));
+        tvAdmin.setEditable(true);
         try {
             tvAdmin.setItems(FXCollections.observableArrayList(adminController.getAllEmploye()));
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 
-    @javafx.fxml.FXML
+        @javafx.fxml.FXML
     public void btnSupprimerCliked(Event event) {
     }
 

@@ -9,16 +9,19 @@ public class Employer {
     private String email;
     private Boolean isBlocked;
     private Boolean isSuprimer;
+    private Boolean changeMdp;
 
 
 
-    public Employer(int id, String nom, String prenom, String email, Boolean isBlocked, Boolean isSuprimer) {
+    public Employer(int id, String nom, String prenom, String email, Boolean isBlocked, Boolean isSuprimer, Boolean changeMdp
+    ) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.isBlocked = isBlocked;
         this.isSuprimer = isSuprimer;
+        this.changeMdp = changeMdp;
     }
     public Employer(int id, String nom, String prenom, String email) {
         this.id = id;
@@ -60,19 +63,26 @@ public class Employer {
         this.email = email;
     }
 
-    public Boolean isBlocked() {
+    public Boolean getIsBlocked() {
         return isBlocked;
     }
 
-    public void setBlocked(boolean blocked) {
+    public void setBlocked(Boolean blocked) {
         isBlocked = blocked;
     }
 
-    public Boolean isSuprimer() {
+    public Boolean getChangeMdp() {
+        return changeMdp;
+    }
+
+    public void setChangeMdp(Boolean changeMdp) {
+        this.changeMdp = changeMdp;
+    }
+    public Boolean getIsSuprimer() {
         return isSuprimer;
     }
 
-    public void setSuprimer(boolean suprimer) {
+    public void setSuprimer(Boolean suprimer) {
         isSuprimer = suprimer;
     }
 }
