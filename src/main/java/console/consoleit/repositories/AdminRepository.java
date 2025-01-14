@@ -1,6 +1,7 @@
 package console.consoleit.repositories;
 
 import console.consoleit.model.Employer;
+import console.consoleit.model.Mission;
 import console.consoleit.tools.DataSourceProvider;
 
 import java.sql.Connection;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 public class AdminRepository {
 
     private Connection connection;
+    PreparedStatement ps;
+    ResultSet rs;
 
     public AdminRepository() {
         this.connection = DataSourceProvider.getCnx();
@@ -71,6 +74,7 @@ public class AdminRepository {
         preparedStatement.executeUpdate();
         preparedStatement.close();
     }
+
     public ArrayList<Employer> getAllEmploye() throws SQLException {
         ArrayList<Employer> employer = new ArrayList<>();
         PreparedStatement preparedStatement = connection.prepareStatement("SELECT id , nom , prenom , email,is_blocked,is_supprimer,changeMdp  FROM Employe WHERE admin = 0;");
@@ -82,5 +86,23 @@ public class AdminRepository {
         preparedStatement.close();
         resultSet.close();
         return employer;
+    }
+
+    public ArrayList<Mission> getMissionById(int employerId) throws SQLException {
+        ArrayList<Mission> missions = new ArrayList<>();
+        String query = "SELECT id, nomMission, matériel, site FROM mission WHERE idEmploye = ?";
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setInt(1, employerId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                missions.add(new Mission(
+                        rs.getInt("id"),
+                        rs.getString("nomMission"),
+                        rs.getString("matériel"),
+                        rs.getString("site")
+                ));
+            }
+        }
+        return missions;
     }
 }

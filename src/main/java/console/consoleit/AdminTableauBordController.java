@@ -58,7 +58,7 @@ public class AdminTableauBordController implements Initializable {
     @FXML
     private TableView tvMissionsEmployer;
     @FXML
-    private TableView tvAdminEmployer;
+    private TableView<Employer> tvAdminEmployer;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,6 +69,12 @@ public class AdminTableauBordController implements Initializable {
         tcNomEmploye.setCellValueFactory(new PropertyValueFactory<>("nom"));
         tcPrenomEmploye.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         tcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        tcIdMission.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tcNomMission.setCellValueFactory(new PropertyValueFactory<>("nomMission"));
+        tcSite.setCellValueFactory(new PropertyValueFactory<>("site"));
+        tcMateriels.setCellValueFactory(new PropertyValueFactory<>("materiel"));
+
 
         try {
             tvAdminEmployer.setItems(FXCollections.observableArrayList(adminController.getAll()));
@@ -87,5 +93,11 @@ public class AdminTableauBordController implements Initializable {
 
     @FXML
     public void BtnSuppCliked(Event event) {
+    }
+
+    @FXML
+    public void tvEmployeCliked(Event event) throws SQLException {
+        int employerId = tvAdminEmployer.getSelectionModel().getSelectedItem().getId();
+        tvMissionsEmployer.setItems(FXCollections.observableArrayList(adminController.getMissionById(employerId)));
     }
 }

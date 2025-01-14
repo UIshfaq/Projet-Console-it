@@ -59,7 +59,8 @@ public class GestionEmployeController implements Initializable {
         }
     }
 
-        @javafx.fxml.FXML
+
+    @javafx.fxml.FXML
     public void btnSupprimerCliked(Event event) {
     }
 

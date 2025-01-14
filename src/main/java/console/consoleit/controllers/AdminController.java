@@ -1,6 +1,7 @@
 package console.consoleit.controllers;
 
 import console.consoleit.model.Employer;
+import console.consoleit.model.Mission;
 import console.consoleit.service.AdminService;
 
 import java.sql.SQLException;
@@ -40,5 +41,9 @@ public class AdminController {
 
     public ArrayList<Employer> getAllEmploye() throws SQLException {
         return adminService.getAllEmploye();
+    }
+
+    public ArrayList<Mission> getMissionById(int id) throws SQLException {
+        return adminService.getMissionById(id);
     }
 }

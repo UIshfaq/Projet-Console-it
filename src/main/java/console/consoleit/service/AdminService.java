@@ -1,6 +1,7 @@
 package console.consoleit.service;
 
 import console.consoleit.model.Employer;
+import console.consoleit.model.Mission;
 import console.consoleit.repositories.AdminRepository;
 import console.consoleit.repositories.EmployerRepository;
 
@@ -40,5 +41,8 @@ public class AdminService {
 
     public ArrayList<Employer> getAllEmploye() throws SQLException {
         return adminRepository.getAllEmploye();
+    }
+    public ArrayList<Mission> getMissionById(int id) throws SQLException {
+        return adminRepository.getMissionById(id);
     }
 }
