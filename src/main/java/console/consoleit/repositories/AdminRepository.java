@@ -99,8 +99,8 @@ public class AdminRepository {
                         rs.getInt("id"),
                         rs.getString("nomMission"),
                         rs.getString("matériel"),
-                        rs.getString("site")
-                        , rs.getString("descriptionMission")
+                        rs.getString("site"),
+                        rs.getString("descriptionMission")
                 ));
             }
         }
