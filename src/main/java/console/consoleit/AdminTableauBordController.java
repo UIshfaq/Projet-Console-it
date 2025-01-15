@@ -1,16 +1,15 @@
 package console.consoleit;
 
 import console.consoleit.controllers.AdminController;
+import console.consoleit.controllers.MissionController;
 import console.consoleit.model.Employer;
+import console.consoleit.model.Mission;
 import console.consoleit.tools.DataSourceProvider;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -56,11 +55,13 @@ public class AdminTableauBordController implements Initializable {
     @FXML
     private TextField txtPrixIntervenant;
     @FXML
-    private TableView tvMissionsEmployer;
+    private TableView<Mission> tvMissionsEmployer;
     @FXML
     private TableView<Employer> tvAdminEmployer;
     @FXML
     private TableColumn tcDescription;
+    MissionController missionController;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -87,7 +88,36 @@ public class AdminTableauBordController implements Initializable {
     }
 
     @FXML
-    public void btnModifCliked(Event event) {
+    public void btnModifCliked(Event event) throws SQLException {
+        Employer tvAdminSelectione = tvAdminEmployer.getSelectionModel().getSelectedItem();
+        Mission missionSelectione = tvMissionsEmployer.getSelectionModel().getSelectedItem();
+        if (tvAdminSelectione == null || missionSelectione == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur");
+            alert.setContentText("Veuillez selectionner un employe et une mission");
+            alert.showAndWait();
+        }
+        if (txtNomMission.getText().isEmpty() || txtMateriel.getText().isEmpty() || txtSite.getText().isEmpty() || txtDescriptionMission.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur");
+            alert.setContentText("Veuillez remplir tous les champs");
+            alert.showAndWait();
+        } else {
+            int idMission = tvMissionsEmployer.getSelectionModel().getSelectedItem().getId();
+            String nomMission = txtNomMission.getText();
+            String materiel = txtMateriel.getText();
+            String site = txtSite.getText();
+            String description = txtDescriptionMission.getText();
+            int prixMission = Integer.parseInt(txtPrixMission.getText());
+            int prixIntervenant = Integer.parseInt(txtPrixIntervenant.getText());
+            if (missionController == null) {
+                missionController = new MissionController();
+            }
+            missionController.ModifierMission(idMission, nomMission, materiel, site, description, prixMission, prixIntervenant);
+            tvMissionsEmployer.setItems(FXCollections.observableArrayList(adminController.getMissionById(tvAdminSelectione.getId())));
+        }
     }
 
     @FXML

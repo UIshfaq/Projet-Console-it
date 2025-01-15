@@ -13,7 +13,7 @@ public class MissionService {
         adminTableauBordRepository.supprimerMission(idMission);
     }
 
-    public void ModifierMission(int idMission, String nomMission, String materiel, String site, String description) {
-        adminTableauBordRepository.ModifierMission(idMission, nomMission, materiel, site, description);
+    public void ModifierMission(int idMission, String nomMission, String materiel, String site, String description, int prixMission, int prixIntervenant) {
+        adminTableauBordRepository.ModifierMission(idMission, nomMission, materiel, site, description, prixMission, prixIntervenant);
     }
 }

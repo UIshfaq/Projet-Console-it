@@ -27,14 +27,16 @@ public class MissionRepositories {
         }
     }
 
-    public void ModifierMission(int idMission, String nomMission, String materiel, String site, String description) {
+    public void ModifierMission(int idEmploye, String nomMission, String materiel, String site, String description, int prixMission, int prixIntervenant) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(
-                "UPDATE mission SET nomMission = ?, materiel = ?, site = ?, description = ? WHERE id = ?")) {
+                "UPDATE mission SET nomMission = ?, matériel = ?, site = ?, descriptionMission = ?, cA = ?, benefice = ? WHERE idEmploye = ?")) {
             preparedStatement.setString(1, nomMission);
             preparedStatement.setString(2, materiel);
             preparedStatement.setString(3, site);
             preparedStatement.setString(4, description);
-            preparedStatement.setInt(5, idMission);
+            preparedStatement.setInt(5, prixMission); // cA
+            preparedStatement.setInt(6, prixIntervenant); // benefice calculé
+            preparedStatement.setInt(7, idEmploye);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

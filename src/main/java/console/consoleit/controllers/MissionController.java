@@ -14,7 +14,7 @@ public class MissionController {
         adminTableauBordService.supprimerMission(idMission);
     }
 
-    public void ModifierMission(int idMission, String nomMission, String materiel, String site, String description) {
-        adminTableauBordService.ModifierMission(idMission, nomMission, materiel, site, description);
+    public void ModifierMission(int idMission, String nomMission, String materiel, String site, String description, int prixMission, int prixIntervenant) {
+        adminTableauBordService.ModifierMission(idMission, nomMission, materiel, site, description, prixMission, prixIntervenant);
     }
 }
