@@ -18,15 +18,18 @@
       <TextField fx:id="txtPrenom" layoutX="75.0" layoutY="132.0" promptText="prénom" />
       <TextField fx:id="txtVille" layoutX="75.0" layoutY="175.0" promptText="ville" />
       <TextField fx:id="txtCodePos" layoutX="75.0" layoutY="223.0" promptText="code postale" />
-      <TextField fx:id="txtMdp" layoutX="312.0" layoutY="175.0" promptText="mot de passe" />
-      <TextField fx:id="txtAdresse" layoutX="312.0" layoutY="85.0" promptText="adresse" />
-      <TextField fx:id="txtTel" layoutX="312.0" layoutY="132.0" promptText="téléphone" />
-      <Label layoutX="23.0" layoutY="89.0" text="Label" />
-      <Label layoutX="23.0" layoutY="136.0" text="Label" />
-      <Label layoutX="23.0" layoutY="179.0" text="Label" />
-      <Label layoutX="23.0" layoutY="227.0" text="Label" />
-      <Label layoutX="271.0" layoutY="89.0" text="Label" />
-      <Label layoutX="271.0" layoutY="136.0" text="Label" />
-      <Label layoutX="271.0" layoutY="179.0" text="Label" />
+      <TextField fx:id="txtMdp" layoutX="333.0" layoutY="175.0" promptText="mot de passe" />
+      <TextField fx:id="txtAdresse" layoutX="333.0" layoutY="85.0" promptText="adresse" />
+      <TextField fx:id="txtTel" layoutX="333.0" layoutY="132.0" promptText="téléphone" />
+      <Label layoutX="23.0" layoutY="89.0" text="Nom" />
+      <Label layoutX="23.0" layoutY="136.0" text="Prénom" />
+      <Label layoutX="23.0" layoutY="179.0" text="Ville" />
+      <Label layoutX="15.0" layoutY="214.0" prefHeight="44.0" prefWidth="65.0" text="Code Postale">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <Label layoutX="271.0" layoutY="89.0" text="Adresse" />
+      <Label layoutX="271.0" layoutY="136.0" text="téléphone" />
+      <Label layoutX="256.0" layoutY="179.0" text="Mot de passe" />
    </children>
 </AnchorPane>
