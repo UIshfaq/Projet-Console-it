@@ -32,7 +32,7 @@
             <TableColumn fx:id="tcDescription" prefWidth="138.66664632161456" text="Description" />
         </columns>
       </TableView>
-      <Button fx:id="btnCreer" layoutX="34.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#btnCreerCliked" prefHeight="34.0" prefWidth="123.0" text="Créer" />
+      <Button fx:id="btnCreer" layoutX="92.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#btnCreerCliked" prefHeight="34.0" prefWidth="123.0" text="Créer" />
       <Button fx:id="btnModif" layoutX="447.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#btnModifCliked" text="Modifier" />
       <Button fx:id="brnSupp" layoutX="576.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#BtnSuppCliked" text="Supprimer" />
       <TextField fx:id="txtNomMission" layoutX="34.0" layoutY="382.0" prefHeight="34.0" prefWidth="146.0" promptText="Nom Mission">
