@@ -5,13 +5,15 @@ public class Mission {
     private String nomMission;
     private String materiel;
     private String site;
+    private String description;
 
 
-    public Mission(int id, String nomMission, String materiel, String site) {
+    public Mission(int id, String nomMission, String materiel, String site, String description) {
         this.id = id;
         this.nomMission = nomMission;
         this.materiel = materiel;
         this.site = site;
+        this.description = description;
     }
 
     public int getId() {
@@ -45,4 +47,13 @@ public class Mission {
     public void setSite(String site) {
         this.site = site;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
+

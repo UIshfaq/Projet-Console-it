@@ -59,6 +59,8 @@ public class AdminTableauBordController implements Initializable {
     private TableView tvMissionsEmployer;
     @FXML
     private TableView<Employer> tvAdminEmployer;
+    @FXML
+    private TableColumn tcDescription;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,6 +76,7 @@ public class AdminTableauBordController implements Initializable {
         tcNomMission.setCellValueFactory(new PropertyValueFactory<>("nomMission"));
         tcSite.setCellValueFactory(new PropertyValueFactory<>("site"));
         tcMateriels.setCellValueFactory(new PropertyValueFactory<>("materiel"));
+        tcDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
 
 
         try {
