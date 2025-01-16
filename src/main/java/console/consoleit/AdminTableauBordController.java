@@ -168,4 +168,5 @@ public class AdminTableauBordController implements Initializable {
         int employerId = tvAdminEmployer.getSelectionModel().getSelectedItem().getId();
         tvMissionsEmployer.setItems(FXCollections.observableArrayList(adminController.getMissionById(employerId)));
     }
+
 }
