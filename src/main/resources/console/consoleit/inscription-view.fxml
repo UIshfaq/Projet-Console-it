@@ -8,28 +8,25 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="console.consoleit.InscriptionController">
    <children>
-      <Label layoutY="-5.0" prefHeight="81.0" prefWidth="600.0" text="                                           Inscription" textAlignment="CENTER">
+      <Label prefHeight="81.0" prefWidth="600.0" textAlignment="CENTER">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
       <Button fx:id="btnValider" layoutX="258.0" layoutY="331.0" mnemonicParsing="false" text="Valider" />
-      <TextField fx:id="txtNom" layoutX="75.0" layoutY="85.0" promptText="nom" />
-      <TextField fx:id="txtPrenom" layoutX="75.0" layoutY="132.0" promptText="prénom" />
-      <TextField fx:id="txtVille" layoutX="75.0" layoutY="175.0" promptText="ville" />
-      <TextField fx:id="txtCodePos" layoutX="75.0" layoutY="223.0" promptText="code postale" />
-      <TextField fx:id="txtMdp" layoutX="333.0" layoutY="175.0" promptText="mot de passe" />
-      <TextField fx:id="txtAdresse" layoutX="333.0" layoutY="85.0" promptText="adresse" />
-      <TextField fx:id="txtTel" layoutX="333.0" layoutY="132.0" promptText="téléphone" />
-      <Label layoutX="23.0" layoutY="89.0" text="Nom" />
-      <Label layoutX="23.0" layoutY="136.0" text="Prénom" />
-      <Label layoutX="23.0" layoutY="179.0" text="Ville" />
-      <Label layoutX="15.0" layoutY="214.0" prefHeight="44.0" prefWidth="65.0" text="Code Postale">
-         <font>
-            <Font size="10.0" />
-         </font></Label>
-      <Label layoutX="271.0" layoutY="89.0" text="Adresse" />
-      <Label layoutX="271.0" layoutY="136.0" text="téléphone" />
-      <Label layoutX="256.0" layoutY="179.0" text="Mot de passe" />
+      <TextField fx:id="txtNom" layoutX="109.0" layoutY="118.0" promptText="nom" />
+      <TextField fx:id="txtPrenom" layoutX="109.0" layoutY="165.0" promptText="prénom" />
+      <TextField fx:id="txtVille" layoutX="109.0" layoutY="208.0" promptText="ville" />
+      <TextField fx:id="txtCodePos" layoutX="120.0" layoutY="278.0" promptText="code postale" />
+      <TextField fx:id="txtMdp" layoutX="346.0" layoutY="208.0" promptText="mot de passe" />
+      <TextField fx:id="txtAdresse" layoutX="346.0" layoutY="118.0" promptText="adresse" />
+      <TextField fx:id="txtTel" layoutX="346.0" layoutY="165.0" promptText="téléphone" />
+      <Label layoutX="57.0" layoutY="122.0" text="Label" />
+      <Label layoutX="57.0" layoutY="169.0" text="Label" />
+      <Label layoutX="57.0" layoutY="212.0" text="Label" />
+      <Label layoutX="57.0" layoutY="260.0" text="Label" />
+      <Label layoutX="305.0" layoutY="122.0" text="Label" />
+      <Label layoutX="305.0" layoutY="169.0" text="Label" />
+      <Label layoutX="305.0" layoutY="212.0" text="Label" />
    </children>
 </AnchorPane>

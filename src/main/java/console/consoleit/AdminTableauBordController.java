@@ -25,6 +25,7 @@ public class AdminTableauBordController implements Initializable {
     private TableColumn<Employer, String> tcPrenomEmploye;
 
     private AdminController adminController;
+    private MissionController missionController;
     DataSourceProvider macnx;
     @FXML
     private TableColumn tcMateriels;
@@ -60,17 +61,16 @@ public class AdminTableauBordController implements Initializable {
     private TableView<Employer> tvAdminEmployer;
     @FXML
     private TableColumn tcDescription;
-    MissionController missionController;
     @FXML
     private TableColumn tcPrixIntervenant;
     @FXML
     private TableColumn tcPrixMission;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         macnx = new DataSourceProvider();
         adminController = new AdminController();
+        missionController = new MissionController(); // Initialize missionController
 
         tcIdEmploye.setCellValueFactory(new PropertyValueFactory<>("id"));
         tcNomEmploye.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -84,7 +84,6 @@ public class AdminTableauBordController implements Initializable {
         tcDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         tcPrixMission.setCellValueFactory(new PropertyValueFactory<>("benefice"));
         tcPrixIntervenant.setCellValueFactory(new PropertyValueFactory<>("cA"));
-
 
         try {
             tvAdminEmployer.setItems(FXCollections.observableArrayList(adminController.getAll()));
@@ -118,16 +117,46 @@ public class AdminTableauBordController implements Initializable {
             String description = txtDescriptionMission.getText();
             int prixMission = Integer.parseInt(txtPrixMission.getText());
             int prixIntervenant = Integer.parseInt(txtPrixIntervenant.getText());
-            if (missionController == null) {
-                missionController = new MissionController();
-            }
             missionController.ModifierMission(idMission, nomMission, materiel, site, description, prixMission, prixIntervenant);
             tvMissionsEmployer.setItems(FXCollections.observableArrayList(adminController.getMissionById(tvAdminSelectione.getId())));
         }
     }
 
     @FXML
-    public void btnCreerCliked(Event event) {
+    public void btnCreerCliked(Event event) throws SQLException {
+        Employer tvAdminSelectione = tvAdminEmployer.getSelectionModel().getSelectedItem();
+
+        if (tvAdminSelectione == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur");
+            alert.setContentText("Veuillez selectionner un employe et une mission");
+            alert.showAndWait();
+        }
+
+        if (txtNomMission.getText().isEmpty() || txtMateriel.getText().isEmpty() || txtSite.getText().isEmpty() || txtDescriptionMission.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur");
+            alert.setContentText("Veuillez remplir tous les champs");
+            alert.showAndWait();
+        } else {
+            String stringNomMission = txtNomMission.getText();
+            String stringSite = txtSite.getText();
+            String stringMateriel = txtMateriel.getText();
+            String stringDescription = txtDescriptionMission.getText();
+            int doublePrixMission = Integer.parseInt(txtPrixMission.getText());
+            int doublePrixIntervenant = Integer.parseInt(txtPrixIntervenant.getText());
+            int idEmployer = tvAdminEmployer.getSelectionModel().getSelectedItem().getId();
+            try {
+                missionController.creeMissionsEmployer(stringNomMission, stringMateriel, stringSite, stringDescription, doublePrixMission, doublePrixIntervenant, idEmployer);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        assert tvAdminSelectione != null;
+        tvMissionsEmployer.setItems(FXCollections.observableArrayList(adminController.getMissionById(tvAdminSelectione.getId())));
+
     }
 
     @FXML

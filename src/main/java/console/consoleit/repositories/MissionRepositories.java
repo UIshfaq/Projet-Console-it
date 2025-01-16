@@ -5,6 +5,7 @@ import console.consoleit.tools.DataSourceProvider;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class MissionRepositories {
 
@@ -43,4 +44,25 @@ public class MissionRepositories {
         }
 
     }
+    public void creeMissionsEmployer(String nomMission, String materiel, String site , String description, int benefice, int cA, int idEmployer) throws SQLException {
+        String query = "INSERT INTO `mission` (`nomMission`, `matériel`, `site`, `descriptionMission`, `benefice`, `cA`,`idEmploye`) " +
+                "VALUES (?, ?, ?, ?, ?, ?,? )";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+        // Remplissage des valeurs pour les colonnes
+        preparedStatement.setString(1, nomMission);
+        preparedStatement.setString(2, materiel );
+        preparedStatement.setString(3, site);
+        preparedStatement.setDouble(5,benefice );
+        preparedStatement.setDouble(6, cA );
+        preparedStatement.setString(4, description);
+        preparedStatement.setInt(7, idEmployer);
+
+
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+    }
+
+
 }
