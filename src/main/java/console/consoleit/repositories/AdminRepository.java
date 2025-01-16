@@ -90,7 +90,7 @@ public class AdminRepository {
 
     public ArrayList<Mission> getMissionById(int employerId) throws SQLException {
         ArrayList<Mission> missions = new ArrayList<>();
-        String query = "SELECT id, nomMission, matériel, site ,descriptionMission FROM mission WHERE idEmploye = ?";
+        String query = "SELECT id, nomMission, matériel, site ,descriptionMission,benefice,cA FROM mission WHERE idEmploye = ?";
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setInt(1, employerId);
             ResultSet rs = ps.executeQuery();
@@ -100,7 +100,9 @@ public class AdminRepository {
                         rs.getString("nomMission"),
                         rs.getString("matériel"),
                         rs.getString("site"),
-                        rs.getString("descriptionMission")
+                        rs.getString("descriptionMission"),
+                        rs.getInt("benefice"),
+                        rs.getInt("cA")
                 ));
             }
         }

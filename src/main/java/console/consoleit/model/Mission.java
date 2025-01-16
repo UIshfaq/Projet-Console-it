@@ -11,12 +11,14 @@ public class Mission {
     private int cA;
 
 
-    public Mission(int id, String nomMission, String materiel, String site, String description) {
+    public Mission(int id, String nomMission, String materiel, String site, String description, int benefice, int cA) {
         this.id = id;
         this.nomMission = nomMission;
         this.materiel = materiel;
         this.site = site;
         this.description = description;
+        this.benefice = benefice;
+        this.cA = cA;
     }
 
     public Mission(int id, String nomMission, String materiel, String site, int idEmployer, String description, int benefice, int cA) {
@@ -68,6 +70,22 @@ public class Mission {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getBenefice() {
+        return benefice;
+    }
+
+    public void setBenefice(int benefice) {
+        this.benefice = benefice;
+    }
+
+    public int getCA() {
+        return cA;
+    }
+
+    public void setCA(int cA) {
+        this.cA = cA;
     }
 }
 

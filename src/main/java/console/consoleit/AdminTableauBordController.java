@@ -61,6 +61,10 @@ public class AdminTableauBordController implements Initializable {
     @FXML
     private TableColumn tcDescription;
     MissionController missionController;
+    @FXML
+    private TableColumn tcPrixIntervenant;
+    @FXML
+    private TableColumn tcPrixMission;
 
 
     @Override
@@ -78,6 +82,8 @@ public class AdminTableauBordController implements Initializable {
         tcSite.setCellValueFactory(new PropertyValueFactory<>("site"));
         tcMateriels.setCellValueFactory(new PropertyValueFactory<>("materiel"));
         tcDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        tcPrixMission.setCellValueFactory(new PropertyValueFactory<>("benefice"));
+        tcPrixIntervenant.setCellValueFactory(new PropertyValueFactory<>("cA"));
 
 
         try {

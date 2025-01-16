@@ -30,8 +30,8 @@
             <TableColumn fx:id="tcMateriels" prefWidth="75.0" text="matériels" />
             <TableColumn fx:id="tcSite" prefWidth="75.0" text="site" />
             <TableColumn fx:id="tcDescription" prefWidth="138.66664632161456" text="Description" />
-            <TableColumn prefWidth="75.0" text="PrixMission" />
-            <TableColumn prefWidth="121.33331298828125" text="Prix intervenant" />
+            <TableColumn fx:id="tcPrixMission" prefWidth="75.0" text="PrixMission" />
+            <TableColumn fx:id="tcPrixIntervenant" prefWidth="121.33331298828125" text="Prix intervenant" />
         </columns>
       </TableView>
       <Button fx:id="btnCreer" layoutX="34.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#btnCreerCliked" prefHeight="34.0" prefWidth="123.0" text="Créer" />
