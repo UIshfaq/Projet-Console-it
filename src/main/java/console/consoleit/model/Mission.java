@@ -5,7 +5,10 @@ public class Mission {
     private String nomMission;
     private String materiel;
     private String site;
+    private int idEmployer;
     private String description;
+    private int benefice;
+    private int cA;
 
 
     public Mission(int id, String nomMission, String materiel, String site, String description) {
@@ -14,6 +17,17 @@ public class Mission {
         this.materiel = materiel;
         this.site = site;
         this.description = description;
+    }
+
+    public Mission(int id, String nomMission, String materiel, String site, int idEmployer, String description, int benefice, int cA) {
+        this.id = id;
+        this.nomMission = nomMission;
+        this.materiel = materiel;
+        this.site = site;
+        this.idEmployer = idEmployer;
+        this.description = description;
+        this.benefice = benefice;
+        this.cA = cA;
     }
 
     public int getId() {
