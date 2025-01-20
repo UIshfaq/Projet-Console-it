@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,20 +14,24 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="btnValider" layoutX="258.0" layoutY="331.0" mnemonicParsing="false" text="Valider" />
-      <TextField fx:id="txtNom" layoutX="109.0" layoutY="118.0" promptText="nom" />
-      <TextField fx:id="txtPrenom" layoutX="109.0" layoutY="165.0" promptText="prénom" />
-      <TextField fx:id="txtVille" layoutX="109.0" layoutY="208.0" promptText="ville" />
-      <TextField fx:id="txtCodePos" layoutX="120.0" layoutY="278.0" promptText="code postale" />
-      <TextField fx:id="txtMdp" layoutX="346.0" layoutY="208.0" promptText="mot de passe" />
-      <TextField fx:id="txtAdresse" layoutX="346.0" layoutY="118.0" promptText="adresse" />
-      <TextField fx:id="txtTel" layoutX="346.0" layoutY="165.0" promptText="téléphone" />
-      <Label layoutX="57.0" layoutY="122.0" text="Label" />
-      <Label layoutX="57.0" layoutY="169.0" text="Label" />
-      <Label layoutX="57.0" layoutY="212.0" text="Label" />
-      <Label layoutX="57.0" layoutY="260.0" text="Label" />
-      <Label layoutX="305.0" layoutY="122.0" text="Label" />
-      <Label layoutX="305.0" layoutY="169.0" text="Label" />
-      <Label layoutX="305.0" layoutY="212.0" text="Label" />
+      <Button fx:id="btnValider" layoutX="258.0" layoutY="331.0" mnemonicParsing="false" onMouseClicked="#btnValiderCliked" text="Valider" />
+      <TextField fx:id="txtNom" layoutX="135.0" layoutY="118.0" promptText="nom" />
+      <TextField fx:id="txtPrenom" layoutX="135.0" layoutY="165.0" promptText="prénom" />
+      <TextField fx:id="txtVille" layoutX="135.0" layoutY="208.0" promptText="ville" />
+      <TextField fx:id="txtCodePos" layoutX="135.0" layoutY="256.0" promptText="code postale" />
+      <TextField fx:id="txtMdp" layoutX="399.0" layoutY="208.0" promptText="mot de passe" />
+      <TextField fx:id="txtAdresse" layoutX="399.0" layoutY="118.0" promptText="adresse" />
+      <TextField fx:id="txtTel" layoutX="399.0" layoutY="165.0" promptText="téléphone" />
+      <Label layoutX="57.0" layoutY="122.0" text="Nom" />
+      <Label layoutX="57.0" layoutY="169.0" text="Prénom" />
+      <Label layoutX="57.0" layoutY="212.0" text="Ville" />
+      <Label layoutX="57.0" layoutY="260.0" text="Code Postale" />
+      <Label layoutX="305.0" layoutY="122.0" text="Adresse" />
+      <Label layoutX="305.0" layoutY="169.0" text="Téléphone" />
+      <Label layoutX="305.0" layoutY="212.0" text="mot de passe" />
+      <DatePicker fx:id="txtDateNaiss" layoutX="399.0" layoutY="256.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="297.0" layoutY="260.0" text="Date de naissance" />
+      <TextField fx:id="txtEmail" layoutX="135.0" layoutY="69.0" promptText="email" />
+      <Label layoutX="64.0" layoutY="73.0" text="Email" />
    </children>
 </AnchorPane>
