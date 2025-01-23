@@ -6,6 +6,7 @@ import console.consoleit.tools.DataSourceProvider;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -61,10 +62,27 @@ public class GestionEmployeController implements Initializable {
 
 
     @javafx.fxml.FXML
-    public void btnSupprimerCliked(Event event) {
+    public void btnSupprimerCliked(Event event) throws SQLException {
+
     }
 
     @javafx.fxml.FXML
-    public void btnBloquerCliked(Event event) {
+    public void btnBloquerCliked(Event event) throws SQLException {
+        if (tvAdmin.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Veuillez selectionner un employe");
+            alert.setContentText("Veuillez selectionner un employe");
+            alert.showAndWait();
+        } else {
+            if (tvAdmin.getSelectionModel().getSelectedItem().getIsBlocked()) {
+                adminController.debloquerEmploye(tvAdmin.getSelectionModel().getSelectedItem().getId());
+                tvAdmin.setItems(FXCollections.observableArrayList(adminController.getAllEmploye()));
+            } else {
+                adminController.bloquerEmploye(tvAdmin.getSelectionModel().getSelectedItem().getId());
+                tvAdmin.setItems(FXCollections.observableArrayList(adminController.getAllEmploye()));
+            }
+        }
     }
+
 }

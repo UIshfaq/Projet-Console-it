@@ -48,14 +48,14 @@ public class AdminRepository {
     }
 
     public void bloquerEmploye(int idEmploye) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE user SET is_blocked = true WHERE id = ?");
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Employe SET is_blocked = true WHERE id = ?");
         preparedStatement.setInt(1, idEmploye);
         preparedStatement.executeUpdate();
         preparedStatement.close();
     }
 
     public void debloquerEmploye(int idUser) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE user SET is_blocked = false WHERE id = ?");
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Employe SET is_blocked = false WHERE id = ?");
         preparedStatement.setInt(1, idUser);
         preparedStatement.executeUpdate();
         preparedStatement.close();
