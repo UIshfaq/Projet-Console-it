@@ -36,7 +36,7 @@
       </TableView>
       <Button fx:id="btnCreer" layoutX="34.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#btnCreerCliked" prefHeight="34.0" prefWidth="123.0" text="Créer" />
       <Button fx:id="btnModif" layoutX="447.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#btnModifCliked" text="Modifier" />
-      <Button fx:id="brnSupp" layoutX="576.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#BtnSuppCliked" text="Supprimer" />
+      <Button fx:id="brnSupp" layoutX="724.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#BtnSuppCliked" text="Supprimer" />
       <TextField fx:id="txtNomMission" layoutX="34.0" layoutY="382.0" prefHeight="34.0" prefWidth="146.0" promptText="Nom Mission">
          <font>
             <Font size="15.0" />

@@ -117,7 +117,7 @@ public class AdminTableauBordController implements Initializable {
             String description = txtDescriptionMission.getText();
             int prixMission = Integer.parseInt(txtPrixMission.getText());
             int prixIntervenant = Integer.parseInt(txtPrixIntervenant.getText());
-            missionController.ModifierMission(idMission, nomMission, materiel, site, description, prixMission, prixIntervenant);
+            missionController.modifierMission(idMission, nomMission, materiel, site, description, prixMission, prixIntervenant);
             tvMissionsEmployer.setItems(FXCollections.observableArrayList(adminController.getMissionById(tvAdminSelectione.getId())));
         }
     }

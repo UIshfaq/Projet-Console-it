@@ -48,7 +48,7 @@ public class InscriptionController implements Initializable {
             alert.showAndWait();
         } else {
             try {
-                employerController.CreeEmployer(
+                employerController.creeEmployer(
                         txtNom.getText(),
                         txtPrenom.getText(),
                         txtAdresse.getText(),

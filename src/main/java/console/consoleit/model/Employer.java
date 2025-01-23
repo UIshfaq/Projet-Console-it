@@ -13,14 +13,13 @@ public class Employer {
 
 
 
-    public Employer(int id, String nom, String prenom, String email, Boolean isBlocked, Boolean isSuprimer, Boolean changeMdp
+    public Employer(int id, String nom, String prenom, String email, Boolean isBlocked, Boolean changeMdp
     ) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.isBlocked = isBlocked;
-        this.isSuprimer = isSuprimer;
         this.changeMdp = changeMdp;
     }
     public Employer(int id, String nom, String prenom, String email) {

@@ -12,12 +12,8 @@ public class MissionController {
         this.adminTableauBordService = new MissionService();
     }
 
-    public void supprimerMission(int idMission) {
-        adminTableauBordService.supprimerMission(idMission);
-    }
-
-    public void ModifierMission(int idMission, String nomMission, String materiel, String site, String description, int prixMission, int prixIntervenant) {
-        adminTableauBordService.ModifierMission(idMission, nomMission, materiel, site, description, prixMission, prixIntervenant);
+    public void modifierMission(int idMission, String nomMission, String materiel, String site, String description, int prixMission, int prixIntervenant) {
+        adminTableauBordService.modifierMission(idMission, nomMission, materiel, site, description, prixMission, prixIntervenant);
     }
 
     public void creeMissionsEmployer(String nomMission, String materiel, String site,  String description, int benefice, int cA, int idEmployer) throws SQLException {

@@ -62,7 +62,7 @@ public class AdminRepository {
     }
 
     public void supprimerUser(int idUser) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE user SET email = CONCAT('anonymous', id, '@veliko.lan'), nom = 'anonymous', prenom = 'anonymous', adresse = 'anonymous', token = NULL WHERE id = ?");
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Employe SET email = CONCAT('anonymous', id, '@veliko.lan'), nom = 'anonymous', prenom = 'anonymous', adresse = 'anonymous', is_supprimer = 1 WHERE id = ?");
         preparedStatement.setInt(1, idUser);
         preparedStatement.executeUpdate();
         preparedStatement.close();
@@ -77,10 +77,10 @@ public class AdminRepository {
 
     public ArrayList<Employer> getAllEmploye() throws SQLException {
         ArrayList<Employer> employer = new ArrayList<>();
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT id , nom , prenom , email,is_blocked,is_supprimer,changeMdp  FROM Employe WHERE admin = 0;");
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT id , nom , prenom , email,is_blocked,changeMdp  FROM Employe WHERE admin = 0 and is_supprimer = 0;");
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            Employer employers = new Employer(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getString("email"),resultSet.getBoolean("is_blocked"),resultSet.getBoolean("is_supprimer"),resultSet.getBoolean("changeMdp"));
+            Employer employers = new Employer(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getString("email"),resultSet.getBoolean("is_blocked"),resultSet.getBoolean("changeMdp"));
             employer.add(employers);
         }
         preparedStatement.close();

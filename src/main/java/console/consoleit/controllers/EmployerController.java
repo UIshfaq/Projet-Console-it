@@ -12,7 +12,9 @@ public class EmployerController {
         this.employerService = new EmployerService();
     }
 
-    public void CreeEmployer(String nom, String prenom, String email, String mdp, String tel, String ville, int CodePos, Date dateNaiss,String adresse) throws SQLException, SQLException {
-        employerService.CreeEmployer(nom, prenom, email, mdp, tel, ville, CodePos, dateNaiss,adresse);
+    public void creeEmployer(String nom, String prenom, String email, String mdp, String tel, String ville, int CodePos, Date dateNaiss,String adresse) throws SQLException, SQLException {
+        employerService.creeEmployer(nom, prenom, email, mdp, tel, ville, CodePos, dateNaiss,adresse);
     }
+
+
 }

@@ -63,6 +63,16 @@ public class GestionEmployeController implements Initializable {
 
     @javafx.fxml.FXML
     public void btnSupprimerCliked(Event event) throws SQLException {
+        if (tvAdmin.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Veuillez selectionner un employe");
+            alert.setContentText("Veuillez selectionner un employe");
+            alert.showAndWait();
+        } else {
+            adminController.supprimerEmploye(tvAdmin.getSelectionModel().getSelectedItem().getId());
+            tvAdmin.setItems(FXCollections.observableArrayList(adminController.getAllEmploye()));
+        }
 
     }
 

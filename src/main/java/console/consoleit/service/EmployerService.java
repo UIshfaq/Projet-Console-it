@@ -12,7 +12,9 @@ public class EmployerService {
         this.employerRepository = new EmployerRepository();
     }
 
-    public void CreeEmployer(String nom, String prenom, String email, String mdp, String tel, String ville, int CodePos, Date dateNaiss,String adresse) throws SQLException {
+    public void creeEmployer(String nom, String prenom, String email, String mdp, String tel, String ville, int CodePos, Date dateNaiss,String adresse) throws SQLException {
         employerRepository.CreeEmployer(nom, prenom, email, mdp, tel, ville, CodePos, (java.sql.Date) dateNaiss,adresse);
     }
+
+
 }

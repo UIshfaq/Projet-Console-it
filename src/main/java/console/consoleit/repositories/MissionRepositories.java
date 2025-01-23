@@ -17,18 +17,8 @@ public class MissionRepositories {
         this.connection = DataSourceProvider.getCnx();
     }
 
-    public void supprimerMission(int idMission) {
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM mission WHERE id = ?");
-            preparedStatement.setInt(1, idMission);
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    public void ModifierMission(int idEmploye, String nomMission, String materiel, String site, String description, int prixMission, int prixIntervenant) {
+    public void modifierMission(int idEmploye, String nomMission, String materiel, String site, String description, int prixMission, int prixIntervenant) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(
                 "UPDATE mission SET nomMission = ?, matériel = ?, site = ?, descriptionMission = ?, cA = ?, benefice = ? WHERE idEmploye = ?")) {
             preparedStatement.setString(1, nomMission);
