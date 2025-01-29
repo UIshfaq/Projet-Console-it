@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -34,6 +35,10 @@ public class InscriptionController implements Initializable {
     EmployerController employerController;
     @javafx.fxml.FXML
     private TextField txtEmail;
+    @javafx.fxml.FXML
+    private Button btnGénérerMdp;
+    @javafx.fxml.FXML
+    private AnchorPane apNouveuEmploye;
 
     @javafx.fxml.FXML
     public void btnValiderCliked(Event event) {
@@ -74,5 +79,10 @@ public class InscriptionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         employerController = new EmployerController();
+    }
+
+    @javafx.fxml.FXML
+    public void btnGenererCliked(Event event) {
+        txtMdp.setText(employerController.genererMotDePasse());
     }
 }

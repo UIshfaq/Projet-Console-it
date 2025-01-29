@@ -16,5 +16,7 @@ public class EmployerController {
         employerService.creeEmployer(nom, prenom, email, mdp, tel, ville, CodePos, dateNaiss,adresse);
     }
 
-
+    public String genererMotDePasse() {
+        return employerService.genererMotDePasse();
+    }
 }

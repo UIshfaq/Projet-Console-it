@@ -9,8 +9,6 @@ public class MenuController {
     @javafx.fxml.FXML
     public Button btnMissions;
     @javafx.fxml.FXML
-    public Button btnEmployeClicked;
-    @javafx.fxml.FXML
     public Button btnAttribution;
     @javafx.fxml.FXML
     private PieChart pieChart;

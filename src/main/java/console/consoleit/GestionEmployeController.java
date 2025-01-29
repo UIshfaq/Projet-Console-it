@@ -51,7 +51,6 @@ public class GestionEmployeController implements Initializable {
         tcPrenomEmploye.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         tcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         tcBloque.setCellValueFactory(new PropertyValueFactory<>("isBlocked"));
-        tcSupprimer.setCellValueFactory(new PropertyValueFactory<>("isSuprimer"));
         tcChangerMdp.setCellValueFactory(new PropertyValueFactory<>("changeMdp"));
         tvAdmin.setEditable(true);
         try {
@@ -95,5 +94,4 @@ public class GestionEmployeController implements Initializable {
             }
         }
     }
-
 }

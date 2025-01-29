@@ -2,6 +2,7 @@ package console.consoleit.repositories;
 
 import console.consoleit.tools.DataSourceProvider;
 
+import java.security.SecureRandom;
 import java.sql.*;
 
 public class EmployerRepository {
@@ -27,12 +28,27 @@ public class EmployerRepository {
             preparedStatement.setString(9, adresse);
             preparedStatement.executeUpdate();
         }
-
-
     }
 
+    public static String genererMotDePasse() {
+        String majuscules = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String minuscules = "abcdefghijklmnopqrstuvwxyz";
+        String chiffres = "0123456789";
+        String caracteresSpeciaux = "!@#$%^&*()-_=+";
+        String allCharacters = majuscules + minuscules + chiffres + caracteresSpeciaux;
 
+        SecureRandom random = new SecureRandom();
+        StringBuilder mdp = new StringBuilder();
 
+        mdp.append(majuscules.charAt(random.nextInt(majuscules.length())));
+        mdp.append(minuscules.charAt(random.nextInt(minuscules.length())));
+        mdp.append(chiffres.charAt(random.nextInt(chiffres.length())));
+        mdp.append(caracteresSpeciaux.charAt(random.nextInt(caracteresSpeciaux.length())));
 
+        for (int i = 4; i < 12; i++) {
+            mdp.append(allCharacters.charAt(random.nextInt(allCharacters.length())));
+        }
 
+        return mdp.toString();
+    }
 }
