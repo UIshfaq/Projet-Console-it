@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -65,6 +66,8 @@ public class AdminTableauBordController implements Initializable {
     private TableColumn tcPrixIntervenant;
     @FXML
     private TableColumn tcPrixMission;
+    @FXML
+    private AnchorPane apMissionsAdmin;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

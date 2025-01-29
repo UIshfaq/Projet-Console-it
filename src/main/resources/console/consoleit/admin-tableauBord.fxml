@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="610.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="console.consoleit.AdminTableauBordController">
+<AnchorPane fx:id="apMissionsAdmin" prefHeight="610.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="console.consoleit.AdminTableauBordController">
    <children>
       <TableView fx:id="tvAdminEmployer" layoutX="16.0" layoutY="100.0" onMouseClicked="#tvEmployeCliked" prefHeight="200.0" prefWidth="318.0">
         <columns>

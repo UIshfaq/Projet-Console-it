@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -34,11 +35,11 @@ public class GestionEmployeController implements Initializable {
     private AdminController adminController;
     DataSourceProvider macnx;
     @javafx.fxml.FXML
-    private TableColumn tcSupprimer;
-    @javafx.fxml.FXML
     private TableColumn tcBloque;
     @javafx.fxml.FXML
     private TableColumn tcChangerMdp;
+    @javafx.fxml.FXML
+    private AnchorPane apListeEmploye;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

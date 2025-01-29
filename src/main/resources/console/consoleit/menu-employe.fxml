@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="apMenuEmploye" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="console.consoleit.MenuController">
+   <children>
+      <AnchorPane focusTraversable="true" layoutY="1.0" pickOnBounds="false" prefHeight="86.0" prefWidth="602.0">
+         <children>
+            <Line endX="437.99993896484375" layoutX="162.0" layoutY="71.0" opacity="0.22" startX="-161.99998474121094" />
+            <Button fx:id="btnMissions" layoutX="205.0" layoutY="4.0" mnemonicParsing="false" onMouseClicked="#btnMissionsClicked" pickOnBounds="false" prefHeight="55.0" prefWidth="247.0" style="-fx-background-color: white;" text="Mes missions" textOverrun="CENTER_WORD_ELLIPSIS">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="17.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="67.0" fitWidth="157.0" layoutX="-1.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Users/bucke/Pictures/stageLogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Line endX="100.0" startX="-100.0" />
+      <PieChart fx:id="pieChart" layoutX="43.0" layoutY="112.0" prefHeight="159.0" prefWidth="201.0" />
+      <Circle fill="WHITE" layoutX="144.0" layoutY="192.0" radius="76.0" stroke="WHITE" strokeMiterLimit="0.0" strokeType="INSIDE">
+         <effect>
+            <Blend />
+         </effect>
+      </Circle>
+   </children>
+</AnchorPane>
