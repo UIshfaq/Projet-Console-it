@@ -3,6 +3,8 @@ package console.consoleit.repositories;
 import console.consoleit.model.Employer;
 import console.consoleit.model.Mission;
 import console.consoleit.tools.DataSourceProvider;
+import console.consoleit.tools.HasherMdp;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,21 +22,32 @@ public class AdminRepository {
         this.connection = DataSourceProvider.getCnx();
     }
 
-    public Boolean verifierIdentifiants(String email, String mdp) throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("SELECT email, mdp, admin FROM employe WHERE email = ? AND mdp = ?");
+    public Boolean verifierIdentifiants(String email, String mdpEntrer) throws SQLException {
+        PreparedStatement ps = connection.prepareStatement("SELECT mdp FROM employe WHERE email = ?");
         ps.setString(1, email);
-        ps.setString(2, mdp);
-        boolean result = false;
         ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            if (rs.getString("mdp").equals(mdp) && rs.getString("email").equals(email)) {
+
+        boolean result = false;
+        if (rs.next()) {
+            String hashedPassword = rs.getString("mdp");
+
+            // Ajout de logs pour debug
+            System.out.println("Hash récupéré depuis la base : " + hashedPassword);
+            System.out.println("Mot de passe entré : " + mdpEntrer);
+
+            if (BCrypt.checkpw(mdpEntrer, hashedPassword)) { // Vérification correcte
+                System.out.println("Mot de passe correct !");
                 result = true;
+            } else {
+                System.out.println("Mot de passe incorrect !");
             }
         }
-        ps.close();
+
         rs.close();
+        ps.close();
         return result;
     }
+
 
     public ArrayList<Employer> getAll() throws SQLException {
         ArrayList<Employer> employer = new ArrayList<>();
@@ -108,4 +121,6 @@ public class AdminRepository {
         }
         return missions;
     }
+
+
 }

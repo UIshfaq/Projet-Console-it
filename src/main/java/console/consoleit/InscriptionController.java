@@ -51,19 +51,40 @@ public class InscriptionController implements Initializable {
             alert.setHeaderText("Erreur lors de l'inscription");
             alert.setContentText("Veuillez remplir tous les champs");
             alert.showAndWait();
+        } else if (!txtEmail.getText().matches("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur lors de l'inscription");
+            alert.setContentText("Email invalide");
+            alert.showAndWait();
+        }
+        else if (txtCodePos.getText().length() != 5 || !txtCodePos.getText().matches("[0-9]+")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur lors de l'inscription");
+            alert.setContentText("Code postal invalide");
+            alert.showAndWait();
+        } else if (txtTel.getText().length() != 10 || !txtTel.getText().matches("[0-9]+")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur lors de l'inscription");
+            alert.setContentText("Numéro de téléphone invalide");
+            alert.showAndWait();
         } else {
             try {
                 employerController.creeEmployer(
                         txtNom.getText(),
                         txtPrenom.getText(),
-                        txtAdresse.getText(),
+                        txtEmail.getText(),  
                         txtMdp.getText(),
                         txtTel.getText(),
                         txtVille.getText(),
                         Integer.parseInt(txtCodePos.getText()),
                         java.sql.Date.valueOf(txtDateNaiss.getValue()),
-                        txtEmail.getText()
+                        txtAdresse.getText()
                 );
+
+
             } catch (SQLException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");

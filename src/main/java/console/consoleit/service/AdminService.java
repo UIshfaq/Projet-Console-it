@@ -45,4 +45,5 @@ public class AdminService {
     public ArrayList<Mission> getMissionById(int id) throws SQLException {
         return adminRepository.getMissionById(id);
     }
+
 }
