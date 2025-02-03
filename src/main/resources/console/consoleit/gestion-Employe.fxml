@@ -8,8 +8,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="apListeEmploye" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="console.consoleit.GestionEmployeController">
+<AnchorPane fx:id="apListeEmploye" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="console.consoleit.GestionEmployeController">
     <children>
     <TableView fx:id="tvAdmin" layoutX="44.0" layoutY="111.0" prefHeight="200.0" prefWidth="518.0">
         <columns>
@@ -31,5 +32,11 @@
             <Image url="@../../img/stageLogo.png" />
          </image>
       </ImageView>
+      <Button fx:id="btnBloquer1" layoutX="382.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#btnBloquerCliked" text="Bloquer" />
+      <Button fx:id="btnNewEmp" layoutX="278.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#btnNewEmpClicked" pickOnBounds="false" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: white;" text="crée un nouvelle employé" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font name="Microsoft Sans Serif" size="17.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

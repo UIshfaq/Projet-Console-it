@@ -5,14 +5,19 @@ import console.consoleit.model.Employer;
 import console.consoleit.tools.DataSourceProvider;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -40,6 +45,10 @@ public class GestionEmployeController implements Initializable {
     private TableColumn tcChangerMdp;
     @javafx.fxml.FXML
     private AnchorPane apListeEmploye;
+    @javafx.fxml.FXML
+    private Button btnBloquer1;
+    @javafx.fxml.FXML
+    private Button btnNewEmp;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -92,6 +101,24 @@ public class GestionEmployeController implements Initializable {
                 adminController.bloquerEmploye(tvAdmin.getSelectionModel().getSelectedItem().getId());
                 tvAdmin.setItems(FXCollections.observableArrayList(adminController.getAllEmploye()));
             }
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void btnNewEmpClicked(MouseEvent event) {
+        if (event.getSource() == btnNewEmp) {
+            FXMLLoader fxmlLoader = new FXMLLoader(ConnectApplication.class.getResource("inscription-view.fxml"));
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Stage stage = new Stage();
+            stage.setTitle("Administrateur");
+            stage.setScene(scene);
+            stage.show();
+
         }
     }
 }

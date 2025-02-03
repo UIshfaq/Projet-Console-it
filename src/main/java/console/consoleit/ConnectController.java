@@ -31,40 +31,41 @@ public class ConnectController implements Initializable {
     DataSourceProvider cnx;
     private AdminController adminController;
 
-
     @Deprecated
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cnx = new DataSourceProvider();
         adminController = new AdminController();
-
-
     }
 
     @FXML
     public void btnConnectClicked(MouseEvent mouseEvent) {
-        if(txtEmail.getText().isEmpty())
-        {
+        if (txtEmail.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Erreur de connexion");
             alert.setContentText("Saisir votre email");
             alert.showAndWait();
-        }
-
-        else if (txtMdp.getText().isEmpty())
-        {
+        } else if (txtMdp.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Erreur de connexion");
             alert.setContentText("Saisir votre mot de passe");
             alert.showAndWait();
-        }
-        else
-        {
+        } else {
             try {
-                if (adminController.verifierIdentifiants(txtEmail.getText(), txtMdp.getText())) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(ConnectApplication.class.getResource("inscription-view.fxml"));
+                if (adminController.verifierAdmin(txtEmail.getText(), txtMdp.getText())) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(ConnectApplication.class.getResource("menu-admin.fxml"));
+
+                    Scene scene = new Scene(fxmlLoader.load());
+                    Stage stage = new Stage();
+                    stage.setTitle("Hello");
+                    stage.setScene(scene);
+                    stage.show();
+                    ((Stage) btnConnect.getScene().getWindow()).close();
+                    System.out.println("c'est bon");
+                } else if (adminController.verifierEmployer(txtEmail.getText(), txtMdp.getText())) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(ConnectApplication.class.getResource("menu-employe.fxml"));
 
                     Scene scene = new Scene(fxmlLoader.load());
                     Stage stage = new Stage();
@@ -86,7 +87,5 @@ public class ConnectController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
-
     }
 }
-
