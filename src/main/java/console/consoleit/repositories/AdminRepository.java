@@ -22,47 +22,25 @@ public class AdminRepository {
         this.connection = DataSourceProvider.getCnx();
     }
 
-    public Boolean verifierAdmin(String email, String mdpEntrer) throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("SELECT mdp FROM employe WHERE email = ?");
-        ps.setString(1, email);
-        ResultSet rs = ps.executeQuery();
+    public int verifierUtilisateur(String email, String mdpEntrer) throws SQLException {
+        String query = "SELECT mdp, admin FROM employe WHERE email = ?";
 
-        boolean result = false;
-        if (rs.next()) {
-            String hashedPassword = rs.getString("mdp");
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    String hashedPassword = rs.getString("mdp");
+                    boolean isAdmin = rs.getBoolean("admin");
 
-            // Ajout de logs pour debug
-            System.out.println("Hash récupéré depuis la base : " + hashedPassword);
-            System.out.println("Mot de passe entré : " + mdpEntrer);
-
-            if (BCrypt.checkpw(mdpEntrer, hashedPassword)) { // Vérification correcte
-                System.out.println("Mot de passe correct !");
-                result = true;
-            } else {
-                System.out.println("Mot de passe incorrect !");
+                    if (BCrypt.checkpw(mdpEntrer, hashedPassword)) {
+                        return isAdmin ? 1 : 0;
+                    }
+                }
             }
         }
-
-        rs.close();
-        ps.close();
-        return result;
+        return -1; // Mauvais identifiants
     }
 
-    public Boolean verifierEmployer(String email, String mdp) throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("SELECT email, mdp, admin FROM employe WHERE email = ? AND mdp = ? AND admin = false");
-        ps.setString(1, email);
-        ps.setString(2, mdp);
-        boolean result = false;
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            if (rs.getString("mdp").equals(mdp) && rs.getString("email").equals(email)) {
-                result = true;
-            }
-        }
-        ps.close();
-        rs.close();
-        return result;
-    }
 
     public ArrayList<Employer> getAll() throws SQLException {
         ArrayList<Employer> employer = new ArrayList<>();
@@ -136,6 +114,4 @@ public class AdminRepository {
         }
         return missions;
     }
-
-
 }

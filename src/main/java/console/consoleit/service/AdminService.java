@@ -15,11 +15,8 @@ public class AdminService {
         this.adminRepository = new AdminRepository();
     }
 
-    public Boolean verifierAdmin(String email, String password) throws SQLException {
-        return adminRepository.verifierAdmin(email, password);
-    }
-    public Boolean verifierEmployer(String email, String password) throws SQLException {
-        return adminRepository.verifierEmployer(email, password);
+   public int verifierUtilisateur(String email, String mdpEntrer) throws SQLException {
+        return adminRepository.verifierUtilisateur(email, mdpEntrer);
     }
 
     public ArrayList<Employer> getAll() throws SQLException {

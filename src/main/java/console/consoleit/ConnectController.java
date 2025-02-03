@@ -54,38 +54,45 @@ public class ConnectController implements Initializable {
             alert.showAndWait();
         } else {
             try {
-                if (adminController.verifierAdmin(txtEmail.getText(), txtMdp.getText())) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(ConnectApplication.class.getResource("menu-admin.fxml"));
+                String email = txtEmail.getText().trim();
+                String mdp = txtMdp.getText().trim();
 
-                    Scene scene = new Scene(fxmlLoader.load());
-                    Stage stage = new Stage();
-                    stage.setTitle("Hello");
-                    stage.setScene(scene);
-                    stage.show();
-                    ((Stage) btnConnect.getScene().getWindow()).close();
-                    System.out.println("c'est bon");
-                } else if (adminController.verifierEmployer(txtEmail.getText(), txtMdp.getText())) {
-                    FXMLLoader fxmlLoader = new FXMLLoader(ConnectApplication.class.getResource("menu-employe.fxml"));
+                // Vérifier d'abord si l'utilisateur est un admin ou un employé en une seule requête
+                int role = adminController.verifierUtilisateur(email, mdp); // -1 = invalide, 0 = employé, 1 = admin
 
-                    Scene scene = new Scene(fxmlLoader.load());
-                    Stage stage = new Stage();
-                    stage.setTitle("Hello");
-                    stage.setScene(scene);
-                    stage.show();
-                    ((Stage) btnConnect.getScene().getWindow()).close();
-                    System.out.println("c'est bon");
-                } else {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Erreur");
-                    alert.setHeaderText("Erreur de connexion");
-                    alert.setContentText("Pseudo ou mot de passe incorrect");
-                    alert.showAndWait();
+                if (role == 1) { // Admin
+                    chargerNouvelleFenetre("menu-admin.fxml");
+                    System.out.println("Connexion Admin réussie !");
+                } else if (role == 0) { // Employé
+                    chargerNouvelleFenetre("menu-employe.fxml");
+                    System.out.println("Connexion Employé réussie !");
+                } else { // Identifiants incorrects
+                    afficherAlerte("Erreur de connexion", "Pseudo ou mot de passe incorrect");
                 }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            } catch (Exception e) {
+                e.printStackTrace();
+                afficherAlerte("Erreur", "Une erreur est survenue lors de la connexion.");
             }
         }
+    }
+
+    // Méthode pour charger une nouvelle fenêtre
+    private void chargerNouvelleFenetre(String fxmlFile) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(ConnectApplication.class.getResource(fxmlFile));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Bienvenue");
+        stage.setScene(scene);
+        stage.show();
+        ((Stage) btnConnect.getScene().getWindow()).close();
+    }
+
+    // Méthode pour afficher une alerte
+    private void afficherAlerte(String titre, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titre);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
