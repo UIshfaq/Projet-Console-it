@@ -48,6 +48,21 @@ public class AdminRepository {
         return result;
     }
 
+    public Boolean verifierEmployer(String email, String mdp) throws SQLException {
+        PreparedStatement ps = connection.prepareStatement("SELECT email, mdp, admin FROM employe WHERE email = ? AND mdp = ? AND admin = false");
+        ps.setString(1, email);
+        ps.setString(2, mdp);
+        boolean result = false;
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            if (rs.getString("mdp").equals(mdp) && rs.getString("email").equals(email)) {
+                result = true;
+            }
+        }
+        ps.close();
+        rs.close();
+        return result;
+    }
 
     public ArrayList<Employer> getAll() throws SQLException {
         ArrayList<Employer> employer = new ArrayList<>();
