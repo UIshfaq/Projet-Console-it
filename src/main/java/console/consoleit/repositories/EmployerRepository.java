@@ -1,10 +1,12 @@
 package console.consoleit.repositories;
 
+import console.consoleit.model.Mission;
 import console.consoleit.tools.DataSourceProvider;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.security.SecureRandom;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class EmployerRepository {
     private Connection connection;
@@ -54,4 +56,26 @@ public class EmployerRepository {
 
         return mdp.toString();
     }
+    public ArrayList<Mission> getMissionById(int employerId) throws SQLException {
+        ArrayList<Mission> missions = new ArrayList<>();
+        String query = "SELECT id, nomMission, matériel, site ,descriptionMission,benefice,cA FROM mission WHERE idEmploye = ?";
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setInt(1, employerId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                missions.add(new Mission(
+                        rs.getInt("id"),
+                        rs.getString("nomMission"),
+                        rs.getString("matériel"),
+                        rs.getString("site"),
+                        rs.getString("descriptionMission"),
+                        rs.getInt("benefice"),
+                        rs.getInt("cA")
+                ));
+            }
+        }
+        return missions;
+    }
+
+
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane fx:id="apMissionsAdmin" prefHeight="507.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="console.consoleit.EmployeTableauBordController">
+   <children>
+      <Label layoutX="81.0" layoutY="80.0" prefHeight="34.0" prefWidth="87.0" text="Les missions" />
+      <TableView fx:id="tvMissionsEmployer" layoutX="44.0" layoutY="114.0" prefHeight="200.0" prefWidth="848.0">
+        <columns>
+          <TableColumn fx:id="tcIdMission" prefWidth="63.999969482421875" text="id" />
+          <TableColumn fx:id="tcNomMission" prefWidth="86.4000244140625" text="nom" />
+            <TableColumn fx:id="tcMateriels" prefWidth="110.40003967285156" text="matériels" />
+            <TableColumn fx:id="tcSite" prefWidth="55.20001220703125" text="site" />
+            <TableColumn fx:id="tcDescription" prefWidth="247.199951171875" text="Description" />
+            <TableColumn fx:id="tcPrixMission" prefWidth="74.4000244140625" text="PrixMission" />
+            <TableColumn fx:id="tcPrixIntervenant" prefWidth="96.7999267578125" text="Prix intervenant" />
+            <TableColumn fx:id="tcMissionTermine" minWidth="0.0" prefWidth="115.199951171875" text="état de la mission" />
+        </columns>
+      </TableView>
+      <Line endX="644.9999389648438" endY="-7.62939453125E-6" layoutX="219.0" layoutY="62.0" opacity="0.25" startX="-219.0" startY="-1.1444091796875E-5" />
+      <ImageView fitHeight="52.0" fitWidth="146.0" layoutX="8.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/stageLogo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

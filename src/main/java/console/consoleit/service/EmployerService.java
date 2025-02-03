@@ -1,8 +1,10 @@
 package console.consoleit.service;
 
+import console.consoleit.model.Mission;
 import console.consoleit.repositories.EmployerRepository;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class EmployerService {
@@ -17,6 +19,10 @@ public class EmployerService {
     }
     public String genererMotDePasse() {
         return EmployerRepository.genererMotDePasse();
+    }
+
+    public ArrayList<Mission> getMissionById(int id) throws SQLException {
+        return employerRepository.getMissionById(id);
     }
 
 }

@@ -22,7 +22,7 @@ public class AdminRepository {
         this.connection = DataSourceProvider.getCnx();
     }
 
-    public Boolean verifierIdentifiants(String email, String mdpEntrer) throws SQLException {
+    public Boolean verifierAdmin(String email, String mdpEntrer) throws SQLException {
         PreparedStatement ps = connection.prepareStatement("SELECT mdp FROM employe WHERE email = ?");
         ps.setString(1, email);
         ResultSet rs = ps.executeQuery();
