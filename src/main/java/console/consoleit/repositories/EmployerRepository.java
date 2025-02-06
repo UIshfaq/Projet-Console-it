@@ -77,5 +77,17 @@ public class EmployerRepository {
         return missions;
     }
 
+    public int getEmployerId(String email) throws SQLException {
+        int id = 0;
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT id FROM Employe WHERE email = ?")) {
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                id = resultSet.getInt("id");
+            }
+        }
+        return id;
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package console.consoleit;
 
 import console.consoleit.controllers.AdminController;
+import console.consoleit.model.Session;
 import console.consoleit.tools.DataSourceProvider;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +32,7 @@ public class ConnectController implements Initializable {
     DataSourceProvider cnx;
     private AdminController adminController;
 
+
     @Deprecated
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,31 +43,23 @@ public class ConnectController implements Initializable {
     @FXML
     public void btnConnectClicked(MouseEvent mouseEvent) {
         if (txtEmail.getText().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Erreur de connexion");
-            alert.setContentText("Saisir votre email");
-            alert.showAndWait();
+            afficherAlerte("Erreur de connexion", "Saisir votre email");
         } else if (txtMdp.getText().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Erreur de connexion");
-            alert.setContentText("Saisir votre mot de passe");
-            alert.showAndWait();
+            afficherAlerte("Erreur de connexion", "Saisir votre mot de passe");
         } else {
             try {
                 String email = txtEmail.getText().trim();
                 String mdp = txtMdp.getText().trim();
 
-                // Vérifier d'abord si l'utilisateur est un admin ou un employé en une seule requête
-                int role = adminController.verifierUtilisateur(email, mdp); // -1 = invalide, 0 = employé, 1 = admin
+                int role = adminController.verifierUtilisateur(email, mdp);
 
                 if (role == 1) { // Admin
                     chargerNouvelleFenetre("menu-admin.fxml");
                     System.out.println("Connexion Admin réussie !");
                 } else if (role == 0) { // Employé
+                    int idEmploye = Session.getIdEmploye(); // Récupérer l'ID stocké
+                    System.out.println("Connexion Employé réussie ! ID Employé : " + idEmploye);
                     chargerNouvelleFenetre("menu-employe.fxml");
-                    System.out.println("Connexion Employé réussie !");
                 } else { // Identifiants incorrects
                     afficherAlerte("Erreur de connexion", "Pseudo ou mot de passe incorrect");
                 }
@@ -75,6 +69,7 @@ public class ConnectController implements Initializable {
             }
         }
     }
+
 
     // Méthode pour charger une nouvelle fenêtre
     private void chargerNouvelleFenetre(String fxmlFile) throws IOException {

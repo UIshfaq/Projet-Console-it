@@ -2,6 +2,7 @@ package console.consoleit.repositories;
 
 import console.consoleit.model.Employer;
 import console.consoleit.model.Mission;
+import console.consoleit.model.Session;
 import console.consoleit.tools.DataSourceProvider;
 import console.consoleit.tools.HasherMdp;
 import org.mindrot.jbcrypt.BCrypt;
@@ -23,7 +24,7 @@ public class AdminRepository {
     }
 
     public int verifierUtilisateur(String email, String mdpEntrer) throws SQLException {
-        String query = "SELECT mdp, admin FROM employe WHERE email = ?";
+        String query = "SELECT id, mdp, admin FROM employe WHERE email = ?";
 
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setString(1, email);
@@ -31,15 +32,23 @@ public class AdminRepository {
                 if (rs.next()) {
                     String hashedPassword = rs.getString("mdp");
                     boolean isAdmin = rs.getBoolean("admin");
+                    int idEmploye = rs.getInt("id");
 
                     if (BCrypt.checkpw(mdpEntrer, hashedPassword)) {
-                        return isAdmin ? 1 : 0;
+                        if (isAdmin) {
+                            return 1; // Admin
+                        } else {
+                            Session.setIdEmploye(idEmploye); // Stocker l'ID
+                            return 0; // Employé
+                        }
                     }
                 }
             }
         }
         return -1; // Mauvais identifiants
     }
+
+
 
 
     public ArrayList<Employer> getAll() throws SQLException {

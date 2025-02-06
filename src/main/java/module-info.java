@@ -6,7 +6,8 @@ module console.consoleit {
     requires jbcrypt;
 
     opens console.consoleit to javafx.fxml;
-    opens console.consoleit.model to javafx.base;
 
     exports console.consoleit;
+    exports console.consoleit.model;
+    opens console.consoleit.model to javafx.base, javafx.fxml;
 }

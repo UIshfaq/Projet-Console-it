@@ -18,8 +18,8 @@ public class MenuEmployeController {
 
     @javafx.fxml.FXML
     public void btnMissionsClicked(MouseEvent mouseEvent) {
-        if (mouseEvent.getSource() == btnMissionsE) {
-            FXMLLoader fxmlLoader = new FXMLLoader(ConnectApplication.class.getResource(""));
+        if (mouseEvent.getSource() == btnMissions) {
+            FXMLLoader fxmlLoader = new FXMLLoader(ConnectApplication.class.getResource("employe-tableauBord.fxml"));
             Scene scene = null;
             try {
                 scene = new Scene(fxmlLoader.load());
