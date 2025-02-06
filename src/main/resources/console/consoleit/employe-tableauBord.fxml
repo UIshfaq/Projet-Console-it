@@ -11,7 +11,7 @@
 <AnchorPane fx:id="apMissionsAdmin" prefHeight="507.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="console.consoleit.EmployeTableauBordController">
    <children>
       <Label layoutX="81.0" layoutY="80.0" prefHeight="34.0" prefWidth="87.0" text="Les missions" />
-      <TableView fx:id="tvMissionsEmployer" layoutX="44.0" layoutY="114.0" prefHeight="200.0" prefWidth="848.0">
+      <TableView fx:id="tvMissionsEmployer" layoutX="44.0" layoutY="114.0" onMouseClicked="#missionTermineClicked" prefHeight="200.0" prefWidth="848.0">
         <columns>
           <TableColumn fx:id="tcIdMission" prefWidth="63.999969482421875" text="id" />
           <TableColumn fx:id="tcNomMission" prefWidth="86.4000244140625" text="nom" />

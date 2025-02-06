@@ -53,7 +53,7 @@ public class AdminRepository {
 
     public ArrayList<Employer> getAll() throws SQLException {
         ArrayList<Employer> employer = new ArrayList<>();
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT id , nom , prenom , email  FROM Employe WHERE admin = 0;");
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT id , nom , prenom , email  FROM Employe WHERE admin = 0 and is_supprimer = 0;");
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             Employer employers = new Employer(resultSet.getInt("id"), resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getString("email"));
@@ -105,7 +105,7 @@ public class AdminRepository {
 
     public ArrayList<Mission> getMissionById(int employerId) throws SQLException {
         ArrayList<Mission> missions = new ArrayList<>();
-        String query = "SELECT id, nomMission, matériel, site ,descriptionMission,benefice,cA FROM mission WHERE idEmploye = ?";
+        String query = "SELECT id, nomMission, matériel, site ,descriptionMission,benefice,cA,missionTermine FROM mission WHERE idEmploye = ?";
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setInt(1, employerId);
             ResultSet rs = ps.executeQuery();
@@ -117,10 +117,12 @@ public class AdminRepository {
                         rs.getString("site"),
                         rs.getString("descriptionMission"),
                         rs.getInt("benefice"),
-                        rs.getInt("cA")
+                        rs.getInt("cA"),
+                        rs.getBoolean("missionTermine")
                 ));
             }
         }
         return missions;
     }
+
 }

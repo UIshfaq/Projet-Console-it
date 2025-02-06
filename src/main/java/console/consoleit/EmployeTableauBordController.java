@@ -1,13 +1,18 @@
 package console.consoleit;
 
 import console.consoleit.controllers.AdminController;
+import console.consoleit.controllers.MissionController;
+import console.consoleit.model.Mission;
 import console.consoleit.model.Session;
 import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import org.w3c.dom.events.Event;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -19,7 +24,7 @@ public class EmployeTableauBordController implements Initializable {
     @javafx.fxml.FXML
     private AnchorPane apMissionsAdmin;
     @javafx.fxml.FXML
-    private TableView tvMissionsEmployer;
+    private TableView <Mission>tvMissionsEmployer;
     @javafx.fxml.FXML
     private TableColumn tcPrixIntervenant;
     @javafx.fxml.FXML
@@ -35,11 +40,13 @@ public class EmployeTableauBordController implements Initializable {
     @javafx.fxml.FXML
     private TableColumn tcPrixMission;
     AdminController adminController;
+    MissionController missionController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int idEmploye = Session.getIdEmploye(); // Récupère l'ID stocké
         adminController = new AdminController();
+        missionController = new MissionController();
         tcIdMission.setCellValueFactory(new PropertyValueFactory<>("id"));
         tcNomMission.setCellValueFactory(new PropertyValueFactory<>("nomMission"));
         tcSite.setCellValueFactory(new PropertyValueFactory<>("site"));
@@ -47,6 +54,7 @@ public class EmployeTableauBordController implements Initializable {
         tcDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         tcPrixMission.setCellValueFactory(new PropertyValueFactory<>("benefice"));
         tcPrixIntervenant.setCellValueFactory(new PropertyValueFactory<>("cA"));
+        tcMissionTermine.setCellValueFactory(new PropertyValueFactory<>("missionTermine"));
 
         try {
             tvMissionsEmployer.setItems(FXCollections.observableArrayList(adminController.getMissionById(idEmploye)));
@@ -57,4 +65,20 @@ public class EmployeTableauBordController implements Initializable {
 
     }
 
+
+
+
+    public void missionTermineClicked(MouseEvent mouseEvent) throws SQLException {
+        Mission missionSelectione = tvMissionsEmployer.getSelectionModel().getSelectedItem();
+        Boolean etatMission = missionSelectione.getMissionTermine();
+        if (etatMission) {
+            missionController.modifierMissionPasFini(missionSelectione.getId());
+        } else {
+            missionController.modifierMissionFini(missionSelectione.getId());
+        }
+
+        // Refresh the table with updated data
+        tvMissionsEmployer.setItems(FXCollections.observableArrayList(adminController.getMissionById(Session.getIdEmploye())));
+    }
 }
+

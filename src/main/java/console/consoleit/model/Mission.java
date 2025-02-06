@@ -9,9 +9,10 @@ public class Mission {
     private String description;
     private int benefice;
     private int cA;
+    private Boolean missionTermine;
 
 
-    public Mission(int id, String nomMission, String materiel, String site, String description, int benefice, int cA) {
+    public Mission(int id, String nomMission, String materiel, String site, String description, int benefice, int cA, Boolean missionTermine) {
         this.id = id;
         this.nomMission = nomMission;
         this.materiel = materiel;
@@ -19,7 +20,9 @@ public class Mission {
         this.description = description;
         this.benefice = benefice;
         this.cA = cA;
+        this.missionTermine = missionTermine ;
     }
+
 
     public Mission(int id, String nomMission, String materiel, String site, int idEmployer, String description, int benefice, int cA) {
         this.id = id;
@@ -30,6 +33,30 @@ public class Mission {
         this.description = description;
         this.benefice = benefice;
         this.cA = cA;
+    }
+
+    public int getIdEmployer() {
+        return idEmployer;
+    }
+
+    public void setIdEmployer(int idEmployer) {
+        this.idEmployer = idEmployer;
+    }
+
+    public int getcA() {
+        return cA;
+    }
+
+    public void setcA(int cA) {
+        this.cA = cA;
+    }
+
+    public Boolean getMissionTermine() {
+        return missionTermine;
+    }
+
+    public void setMissionTermine(Boolean missionTermine) {
+        this.missionTermine = missionTermine;
     }
 
     public int getId() {

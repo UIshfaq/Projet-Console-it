@@ -55,4 +55,18 @@ public class MissionRepositories {
     }
 
 
+
+    public void modifierEtatMissionFini(int id) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE mission SET missionTermine = 1 WHERE id = ?");
+        preparedStatement.setInt(1, id);
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+    }
+
+    public void modifierEtatMissionNonFini(int id) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE mission SET missionTermine = 0 WHERE id = ?");
+        preparedStatement.setInt(1, id);
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+    }
 }

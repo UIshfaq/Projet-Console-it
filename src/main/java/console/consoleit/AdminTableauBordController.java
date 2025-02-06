@@ -68,6 +68,9 @@ public class AdminTableauBordController implements Initializable {
     private TableColumn tcPrixMission;
     @FXML
     private AnchorPane apMissionsAdmin;
+    @FXML
+    private TableColumn tcTermine;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -87,6 +90,7 @@ public class AdminTableauBordController implements Initializable {
         tcDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         tcPrixMission.setCellValueFactory(new PropertyValueFactory<>("benefice"));
         tcPrixIntervenant.setCellValueFactory(new PropertyValueFactory<>("cA"));
+        tcTermine.setCellValueFactory(new PropertyValueFactory<>("missionTermine"));
 
         try {
             tvAdminEmployer.setItems(FXCollections.observableArrayList(adminController.getAll()));
@@ -172,4 +176,27 @@ public class AdminTableauBordController implements Initializable {
         tvMissionsEmployer.setItems(FXCollections.observableArrayList(adminController.getMissionById(employerId)));
     }
 
+    @FXML
+    public void changeMissionTermineClicked(Event event) throws SQLException {
+        Mission missionSelectione = tvMissionsEmployer.getSelectionModel().getSelectedItem();
+        if (missionSelectione == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur");
+            alert.setContentText("Veuillez sélectionner une mission");
+            alert.showAndWait();
+            return;
+        }
+
+        Boolean etatMission = missionSelectione.getMissionTermine();
+        if (etatMission) {
+            missionController.modifierMissionPasFini(missionSelectione.getId());
+        } else {
+            missionController.modifierMissionFini(missionSelectione.getId());
+        }
+
+        // Refresh the table with updated data
+        int employerId = tvAdminEmployer.getSelectionModel().getSelectedItem().getId();
+        tvMissionsEmployer.setItems(FXCollections.observableArrayList(adminController.getMissionById(employerId)));
+    }
 }
