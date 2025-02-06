@@ -1,6 +1,7 @@
 package console.consoleit;
 
 import console.consoleit.controllers.AdminController;
+import console.consoleit.controllers.EmployerController;
 import console.consoleit.model.Session;
 import console.consoleit.tools.DataSourceProvider;
 import javafx.fxml.FXML;
@@ -31,6 +32,7 @@ public class ConnectController implements Initializable {
     private Button btnConnect;
     DataSourceProvider cnx;
     private AdminController adminController;
+    EmployerController employerController;
 
 
     @Deprecated
@@ -38,10 +40,11 @@ public class ConnectController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cnx = new DataSourceProvider();
         adminController = new AdminController();
+        employerController = new EmployerController();
     }
 
     @FXML
-    public void btnConnectClicked(MouseEvent mouseEvent) {
+    public void btnConnectClicked(MouseEvent mouseEvent) throws SQLException {
         if (txtEmail.getText().isEmpty()) {
             afficherAlerte("Erreur de connexion", "Saisir votre email");
         } else if (txtMdp.getText().isEmpty()) {
@@ -52,8 +55,13 @@ public class ConnectController implements Initializable {
                 String mdp = txtMdp.getText().trim();
 
                 int role = adminController.verifierUtilisateur(email, mdp);
-
-                if (role == 1) { // Admin
+                if (employerController.estBloque(Session.getIdEmploye())) {
+                    afficherAlerte("Erreur de connexion", "Votre compte est bloqué");
+                } else if (employerController.estSupprimer(Session.getIdEmploye())) {
+                    afficherAlerte("Erreur de connexion", "Votre compte a été supprimé");
+                } else if (employerController.estChangeMdp(Session.getIdEmploye())) {
+                    afficherAlerte("Erreur de connexion", "Vous devez changer votre mot de passe contacter un administrateur");
+                } else if (role == 1) { // Admin
                     chargerNouvelleFenetre("menu-admin.fxml");
                     System.out.println("Connexion Admin réussie !");
                 } else if (role == 0) { // Employé

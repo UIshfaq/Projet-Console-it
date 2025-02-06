@@ -25,4 +25,16 @@ public class EmployerService {
         return employerRepository.getMissionById(id);
     }
 
+    public boolean estBloque(int id) throws SQLException {
+        return employerRepository.estBloque(id);
+    }
+
+    public boolean estSupprimer(int id) throws SQLException {
+        return employerRepository.estSupprimer(id);
+    }
+
+    public boolean estChangeMdp(int id) throws SQLException {
+        return employerRepository.estChangeMdp(id);
+    }
+
 }

@@ -89,5 +89,39 @@ public class EmployerRepository {
         return id;
     }
 
+    public boolean estBloque(int idEmploye) throws SQLException {
+        boolean isBlocked = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT is_blocked FROM Employe WHERE id = ?")) {
+            preparedStatement.setInt(1, idEmploye);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                isBlocked = resultSet.getBoolean("is_blocked");
+            }
+        }
+        return isBlocked;
+    }
 
+    public boolean estSupprimer(int idEmploye) throws SQLException {
+        boolean isSupprimer = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT is_supprimer FROM Employe WHERE id = ?")) {
+            preparedStatement.setInt(1, idEmploye);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                isSupprimer = resultSet.getBoolean("is_supprimer");
+            }
+        }
+        return isSupprimer;
+    }
+
+    public boolean estChangeMdp(int idEmploye) throws SQLException {
+        boolean changeMdp = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT changeMdp FROM Employe WHERE id = ?")) {
+            preparedStatement.setInt(1, idEmploye);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                changeMdp = resultSet.getBoolean("changeMdp");
+            }
+        }
+        return changeMdp;
+    }
 }
