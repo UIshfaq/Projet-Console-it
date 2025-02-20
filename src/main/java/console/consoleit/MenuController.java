@@ -13,8 +13,6 @@ import java.io.IOException;
 
 public class MenuController {
     @javafx.fxml.FXML
-    public Button btnMissions;
-    @javafx.fxml.FXML
     private PieChart pieChart;
     @javafx.fxml.FXML
     private AnchorPane apMenuAdmin;
@@ -56,7 +54,7 @@ public class MenuController {
             stage.show();
 
         }
-        if (mouseEvent.getSource() == btnMissions) {
+        /*if (mouseEvent.getSource() == btnMissions) {
             FXMLLoader fxmlLoader = new FXMLLoader(ConnectApplication.class.getResource(""));
             Scene scene = null;
             try {
@@ -69,7 +67,7 @@ public class MenuController {
             stage.setScene(scene);
             stage.show();
 
-        }
+        }*/
     }
 
 

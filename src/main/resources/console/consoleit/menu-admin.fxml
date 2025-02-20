@@ -15,11 +15,6 @@
       <AnchorPane focusTraversable="true" layoutY="1.0" pickOnBounds="false" prefHeight="86.0" prefWidth="602.0">
          <children>
             <Line endX="437.99993896484375" layoutX="162.0" layoutY="71.0" opacity="0.22" startX="-161.99998474121094" />
-            <Button fx:id="btnMissions" layoutX="207.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#btnClickeddd" pickOnBounds="false" prefHeight="59.0" prefWidth="130.0" style="-fx-background-color: white;" text="Mes missions" textOverrun="CENTER_WORD_ELLIPSIS">
-               <font>
-                  <Font name="Microsoft Sans Serif" size="17.0" />
-               </font>
-            </Button>
             <Button fx:id="btnEmploye" layoutX="337.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#btnClickeddd" pickOnBounds="false" prefHeight="59.0" prefWidth="130.0" style="-fx-background-color: white;" text="Employés" textOverrun="CENTER_WORD_ELLIPSIS">
                <font>
                   <Font name="Microsoft Sans Serif" size="17.0" />
